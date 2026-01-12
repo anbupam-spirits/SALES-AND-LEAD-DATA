@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales & Leads Data Collection</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for premium feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sales Entry Form</h1>
+            <p>Capture real-time field data</p>
+        </header>
+
+        <form id="salesForm" enctype="multipart/form-data">
+            
+            <!-- 1. SR NAME -->
+            <div class="form-group">
+                <label for="srName">SR Name <span class="required">*</span></label>
+                <select id="srName" name="srName" required>
+                    <option value="" disabled selected>Select SR Name</option>
+                    <option value="SHUBRAM KAR">SHUBRAM KAR</option>
+                    <option value="RAJU DAS">RAJU DAS</option>
+                </select>
+            </div>
+
+            <!-- 2. STORE NAME AND CONTACT PERSON -->
+            <div class="form-group">
+                <label for="storeName">Store Name & Contact Person <span class="required">*</span></label>
+                <input type="text" id="storeName" name="storeName" placeholder="E.g., ABC Mart - John Doe" required>
+            </div>
+
+            <!-- 3. STORE VISIT TYPE -->
+            <div class="form-group">
+                <label for="visitType">Store Visit Type <span class="required">*</span></label>
+                <select id="visitType" name="visitType" required>
+                    <option value="" disabled selected>Select Visit Type</option>
+                    <option value="NEW VISIT">NEW VISIT</option>
+                    <option value="RE VISIT">RE VISIT</option>
+                </select>
+            </div>
+
+            <!-- 4. STORE CATEGORY -->
+            <div class="form-group">
+                <label for="category">Store Category <span class="required">*</span></label>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="MT">MT</option>
+                    <option value="HoReca">HoReca</option>
+                </select>
+            </div>
+
+            <!-- 5. PHONE NUMBER -->
+            <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" title="Please enter a valid 10-digit number" required>
+            </div>
+
+            <!-- 6. LEAD TYPE -->
+            <div class="form-group">
+                <label>Lead Type <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label class="radio-card hot">
+                        <input type="radio" name="leadType" value="HOT" required>
+                        <span>HOT</span>
+                    </label>
+                    <label class="radio-card warm">
+                        <input type="radio" name="leadType" value="WARM">
+                        <span>WARM</span>
+                    </label>
+                    <label class="radio-card cold">
+                        <input type="radio" name="leadType" value="COLD">
+                        <span>COLD</span>
+                    </label>
+                    <label class="radio-card dead">
+                        <input type="radio" name="leadType" value="DEAD">
+                        <span>DEAD</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 7. FOLLOW UP DATE -->
+            <div class="form-group">
+                <label for="followUpDate">Follow Up Date</label>
+                <input type="date" id="followUpDate" name="followUpDate">
+            </div>
+
+            <!-- 8. PHOTOGRAPH -->
+            <div class="form-group">
+                <label for="photograph">Photograph <span class="required">*</span></label>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="photograph" name="photograph" accept="image/*" capture="environment" required>
+                    <p class="file-hint">Capture or upload store image</p>
+                </div>
+            </div>
+
+            <!-- 9. TOBACCO PRODUCTS -->
+            <div class="form-group">
+                <label>Tobacco Products Interested/Dealing In <span class="required">*</span></label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="products" value="CIGARETTE"> Cigarette</label>
+                    <label><input type="checkbox" name="products" value="ROLLING PAPERS"> Rolling Papers</label>
+                    <label><input type="checkbox" name="products" value="CIGARS"> Cigars</label>
+                    <label><input type="checkbox" name="products" value="HOOKAH"> Hookah</label>
+                    <label><input type="checkbox" name="products" value="ZIPPO LIGHTERS"> Zippo Lighters</label>
+                    <label><input type="checkbox" name="products" value="NONE"> None</label>
+                </div>
+            </div>
+
+            <!-- 10. ORDER DETAILS -->
+            <div class="form-group">
+                <label for="orderDetails">Order Details (If Converted)</label>
+                <textarea id="orderDetails" name="orderDetails" rows="3" placeholder="Enter details of the order..."></textarea>
+            </div>
+
+            <!-- LOCATION CAPTURE -->
+            <div class="form-group location-section">
+                <label>Click the link to record location. Did you record the location? <span class="required">*</span></label>
+                
+                <div class="location-controls">
+                    <button type="button" id="getLocationBtn" class="btn-secondary">
+                        📍 Record Location Now
+                    </button>
+                    <span id="locationStatus" class="status-text">Not recorded</span>
+                </div>
+
+                <div class="radio-group mt-2">
+                    <label class="radio-card">
+                        <input type="radio" name="locationRecorded" value="YES" required id="locYes">
+                        <span>YES</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="locationRecorded" value="NO" id="locNo">
+                        <span>NO</span>
+                    </label>
+                </div>
+                
+                <!-- Hidden inputs for location storage -->
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+                <input type="hidden" id="locationLink" name="locationLink">
+            </div>
+
+            <!-- REMARKS -->
+            <div class="form-group">
+                <label for="remarks">Remarks <span class="required">*</span></label>
+                <textarea id="remarks" name="remarks" rows="3" required placeholder="Add any additional notes..."></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-primary">Submit Form</button>
+        </form>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
